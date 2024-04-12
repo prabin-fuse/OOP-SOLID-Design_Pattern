@@ -1,3 +1,7 @@
+import logging
+
+logging.basicConfig(level=logging.DEBUG)
+
 class University:
     
     def __init__(self, name, location):
@@ -51,7 +55,7 @@ class Department(University):
         self.courses = []
 
     @property
-    def department_name(self):
+    def get_department_name(self):
         return self.department_name
     
     @property
@@ -62,13 +66,13 @@ class Department(University):
         if course not in self.courses:
             self.courses.append(course)
     
-    
+    def remove_course(self, course):
+        if course in self.courses:
+            self.courses.remove(course)
 
     def display_details(self):
         return "Department Name : {}\n HOD : {}\Courses : {}".format(self.department_name, self.hod,
                                                                     [x for x in self.courses])
-
-
 
 ## testing:
 uni1 = University("Tribhuwan University", "Kirtipur")
@@ -77,3 +81,18 @@ uni1.__name = "Pokhara University" # cannot change bcz of encapulation
 print(uni1.name)
 uni1.name = "Kathmandu University" ## can be changed because of setter
 print(uni1.name)
+
+depart1 = Department("Computer", "KCD")
+depart2 = Department("Electronics", "Ramesh")
+depart3 = Department("Civil", "Ujjwal")
+
+depart1.add_course("DSA")
+depart1.add_course("Discrete Structure")
+depart1.add_course("C Programming")
+
+uni1.add_department(depart1)
+uni1.add_department(depart2)
+
+print("Uni INfo:\n", uni1.display_details())
+print("Department INfo:\n", depart1.display_details())
+
