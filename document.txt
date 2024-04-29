@@ -1,0 +1,4 @@
+Plain Text Document:
+Title: Plain Text Title
+Body: Plain Text Body
+Footer: Plain Text Footer
